@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Passport Test</title>
+</head>
+
+<body>
+    <button id="googleLoginBtn" type="button" class="btn btn-primary" onclick="googleLogin()">Login With Google</button>
+</body>
+
+<script>
+    function googleLogin() {
+        const win = window.open('/api/auth/google','Passport Login with Google', 'width=600,height=600');
+        win.onclose = function (ev) {
+            console.log(ev, this);
+        }
+        function receiveMessage(event) {
+            console.log(event);
+        }
+        window.addEventListener("message", receiveMessage, false);
+    }
+</script>
+
+</html>
